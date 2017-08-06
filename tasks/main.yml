@@ -1,0 +1,53 @@
+---
+
+ - name: Send a success email
+   mail:
+    host: smtp.mandrillapp.com
+    port: 587 
+    username: 28283aeebd83616c6
+    password: 0432eb4224e406
+    to: Adam Shields <adam@gmail.com>
+    subject: Installation Update
+    body: 'The installation is complete.'
+
+ - name: Send the latest report
+   mail:
+    host: smtp.mandrillapp.com
+    port: 587 
+    username: 28283aeebd83616c6
+    password: 0432eb4224e406
+    to: Adam Shields <adam@gmail.com>
+    subject: Installation Update
+    body: 'Attached is the report of the changes that is live'
+    attach: /var/www/reports/latest.csv
+
+ - name: Sending email to multiple recipients
+   mail:
+    host: smtp.mandrillapp.com
+    port: 587 
+    username: 28283aeebd83616c6
+    password: 0432eb4224e406
+    to: Adam Shields <adam@gmail.com>, John Cairins <john@outlook.com>
+    subject: Overview of the changes
+    body: 'Change 1205 is live.'
+
+ - name: Sending contents of a file in the email body
+   mail:
+    host: smtp.mandrillapp.com
+    port: 587 
+    username: 28283aeebd83616c6
+    password: 0432eb4224e406
+    to: Adam Shields <adam@gmail.com>
+    subject: Change log
+    body: "{{ lookup('file', '/var/www/release.txt') }}"
+
+ - name: Sending a HTML email
+   mail:
+    host: smtp.mandrillapp.com
+    port: 587
+    username: 28283aeebd83616c6
+    password: 0432eb4224e406
+    to: Adam Shields <adam@gmail.com>
+    subject: Overview of the changes
+    subtype: html
+    body: '<h1>Change log</h1>'
